@@ -1,0 +1,15 @@
+---
+layout: page
+title: Kategorie
+permalink: /categories/
+---
+
+{% assign cats0 = site.categories %}
+{% assign cats = cats0 | where_exp:'c','c.layout == "post"' | where_exp:'c','c.title != null' | sort: 'title' %}
+<div class="archive-group">
+  {% for cat in cats %}
+  <li>
+    <a class="posts-nav-item" href="{{ cat.url | relative_url }}">{{ cat.title }}</a>
+  </li>
+  {% endfor %}
+</div>
